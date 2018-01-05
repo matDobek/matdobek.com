@@ -1,4 +1,4 @@
 #!/bin/bash
 
-ssh r_priv "rm -rf /var/www/matdobek.com"
-scp -r ./ r_priv:/var/www/matdobek.com
+scp -r ./assets/ r_priv:/var/www/matdobek.com/assets/
+scp ./index.html r_priv:/var/www/matdobek.com/index.html
