@@ -1,0 +1,155 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Class instance variables">
+  <meta name="keywords" content="Mateusz,Dobek,matdobek,class,instance,variables">
+  <meta name="author" content="Mateusz Dobek">
+  <title>Class instance variables</title>
+  <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+</head>
+
+<body>
+  <h1>Class instance variables</h1>
+<h2 id="class-variables">Class variables</h2>
+
+<p>Probably most of you already know what class variables are, but lets hit refresh.<br />
+Class variable is shared across all instances of class + all instances of subclasses.</p>
+
+<div class="language-ruby highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+<a href="#n25" name="n25">25</a>
+<a href="#n26" name="n26">26</a>
+<a href="#n27" name="n27">27</a>
+<a href="#n28" name="n28">28</a>
+</pre></td>
+  <td class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Animal</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">animals_created</span>
+    <span style="color:#369">@@animals_created</span> ||= []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">add_animal</span>(instance)
+    <span style="color:#369">@@animals_created</span> &lt;&lt; instance
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#069">self</span>.class.animals_created
+    <span style="color:#069">self</span>.class.add_animal(<span style="color:#069">self</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Shark</span> &lt; <span style="color:#036;font-weight:bold">Animal</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Seagull</span> &lt; <span style="color:#036;font-weight:bold">Animal</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+shark = <span style="color:#036;font-weight:bold">Shark</span>.new
+seagull1 = <span style="color:#036;font-weight:bold">Seagull</span>.new
+seagull2= <span style="color:#036;font-weight:bold">Seagull</span>.new
+
+puts <span style="color:#036;font-weight:bold">Animal</span>.animals_created.count <span style="color:#777">#=&gt; 3</span>
+puts <span style="color:#036;font-weight:bold">Shark</span>.animals_created.count <span style="color:#777">#=&gt; 3</span>
+puts <span style="color:#036;font-weight:bold">Seagull</span>.animals_created.count <span style="color:#777">#=&gt; 3</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p><code>Animal</code> , <code>Shark</code> and <code>Seagull</code> share the same <code>animals_created variable</code>, among all instances.</p>
+
+<h2 id="class-instance-variables">Class instance variables</h2>
+
+<p>Class instance variable, is shared across all instances of class, but each subclass, has it&#8217;s own copy of class instance variable.</p>
+
+<div class="language-ruby highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+<a href="#n25" name="n25">25</a>
+<a href="#n26" name="n26">26</a>
+<a href="#n27" name="n27">27</a>
+<a href="#n28" name="n28">28</a>
+</pre></td>
+  <td class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Animal</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">animals_created</span>
+    <span style="color:#33B">@animals_created</span> ||= []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">add_animal</span>(instance)
+    <span style="color:#33B">@animals_created</span> &lt;&lt; instance
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#069">self</span>.class.animals_created
+    <span style="color:#069">self</span>.class.add_animal(<span style="color:#069">self</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Shark</span> &lt; <span style="color:#036;font-weight:bold">Animal</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Seagull</span> &lt; <span style="color:#036;font-weight:bold">Animal</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+shark = <span style="color:#036;font-weight:bold">Shark</span>.new
+seagull1 = <span style="color:#036;font-weight:bold">Seagull</span>.new
+seagull2= <span style="color:#036;font-weight:bold">Seagull</span>.new
+
+puts <span style="color:#036;font-weight:bold">Animal</span>.animals_created.count <span style="color:#777">#=&gt; 0</span>
+puts <span style="color:#036;font-weight:bold">Shark</span>.animals_created.count <span style="color:#777">#=&gt; 1</span>
+puts <span style="color:#036;font-weight:bold">Seagull</span>.animals_created.count <span style="color:#777">#=&gt; 2</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>Class instance varialbe is different for <code>Animal</code>, <code>Shark</code> and <code>Seagull</code> class, but</p>
+
+<ul>
+  <li>all <code>Animal</code> instances share the same <code>class_instance_variable</code>,</li>
+  <li>all <code>Shark</code> instances share the same <code>class_instance_variable</code>, and</li>
+  <li>all <code>Seagull</code> instances share the same <code>class_instance_variable</code>.</li>
+</ul>
+
+</body>
