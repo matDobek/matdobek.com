@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ruby -I test tests/all_tests.rb
