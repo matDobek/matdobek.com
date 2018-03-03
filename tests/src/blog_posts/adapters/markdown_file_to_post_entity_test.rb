@@ -8,7 +8,7 @@ class BlogPosts::Adapters::MarkdownFileToPostEntityTest < Test::Unit::TestCase
   def object_under_test
     fake_file = Object.new
     def fake_file.filename; "1990-01-01__ruby_on_rails__foo_bar" ; end
-    def fake_file.content; "##Foo bar content" ; end
+    def fake_file.content; "## Foo bar content" ; end
 
     class_under_test.new(file: fake_file)
   end

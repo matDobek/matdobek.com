@@ -5,24 +5,24 @@ class BlogPosts::Persistance::FileTest < Test::Unit::TestCase
     ::BlogPosts::Persistance::File
   end
 
-  def test_filename___returns_filename_without_extenstion___when_extenstion_present
+  def test_filename___returns_filename_without_extension___when_extension_present
     object_under_test = class_under_test.new(filename: "sample.md", content: "")
     assert_equal("sample", object_under_test.filename)
   end
 
-  def test_filename___returns_filename_without_extenstion___when_extenstion_not_present
+  def test_filename___returns_filename_without_extension___when_extension_not_present
     object_under_test = class_under_test.new(filename: "sample", content: "")
     assert_equal("sample", object_under_test.filename)
   end
 
-  def test_extenstion___returns_extenstion___when_extenstion_present
+  def test_extension___returns_extension___when_extension_present
     object_under_test = class_under_test.new(filename: "sample.md", content: "")
-    assert_equal("md", object_under_test.extenstion)
+    assert_equal("md", object_under_test.extension)
   end
 
-  def test_extenstion___returns_empty_string___when_extenstion_not_present
+  def test_extension___returns_empty_string___when_extension_not_present
     object_under_test = class_under_test.new(filename: "sample", content: "")
-    assert_equal("", object_under_test.extenstion)
+    assert_equal("", object_under_test.extension)
   end
 
   def test_content___returns_content
@@ -30,7 +30,7 @@ class BlogPosts::Persistance::FileTest < Test::Unit::TestCase
     assert_equal("content", object_under_test.content)
   end
 
-  def test_comparasion___when_filename_extenstion_and_content_are_the_same
+  def test_comparasion___when_filename_extension_and_content_are_the_same
     object_1 = class_under_test.new(filename: "sample.md", content: "content")
     object_2 = class_under_test.new(filename: "sample.md", content: "content")
 
@@ -44,7 +44,7 @@ class BlogPosts::Persistance::FileTest < Test::Unit::TestCase
     assert_not_equal(object_1, object_2)
   end
 
-  def test_comparasion___when_extenstion_differs
+  def test_comparasion___when_extension_differs
     object_1 = class_under_test.new(filename: "sample.md", content: "content")
     object_2 = class_under_test.new(filename: "sample.txt", content: "content")
 
