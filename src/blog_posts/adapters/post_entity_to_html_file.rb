@@ -62,6 +62,7 @@ module BlogPosts
           </head>
 
           <body>
+            <a href="../index.html">&#10094;&#10094;&#10094;</a>
             <h1>#{body_title}</h1>
           #{article}
           </body>

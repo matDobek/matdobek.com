@@ -29,6 +29,7 @@ class BlogPosts::Adapters::PostEntityToHTMLFileTest < Test::Unit::TestCase
       </head>
 
       <body>
+        <a href="../index.html">&#10094;&#10094;&#10094;</a>
         <h1>Foo bar</h1>
       <h2>Header hello</h2>
       <p>Paragraph hello</p>
