@@ -36,10 +36,9 @@ module BlogPosts
         html_directory.write
 
 
-
-
-
-
+        #
+        # TODO : clean up
+        #
         links = post_collection.zip(file_collection).map do |post, file|
           title = "[#{post.date} ; #{post.category}] #{post.title}"
           url = "#{html_dir_path}/#{file.filename}.html"
