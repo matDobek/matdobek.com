@@ -19,6 +19,7 @@ class BlogPosts::Adapters::PostEntityToHTMLFileTest < Test::Unit::TestCase
 
   def test_call
     expected_content = <<~HEREDOC
+      <!DOCTYPE html>
       <head>
         <meta charset="UTF-8">
         <meta name="description" content="Foo bar">

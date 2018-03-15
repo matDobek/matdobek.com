@@ -52,6 +52,7 @@ module BlogPosts
         head_title = entity.title
 
         <<~HEREDOC
+          <!DOCTYPE html>
           <head>
             <meta charset="UTF-8">
             <meta name="description" content="#{head_description}">
