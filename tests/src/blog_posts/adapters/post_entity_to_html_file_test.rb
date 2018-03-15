@@ -20,21 +20,23 @@ class BlogPosts::Adapters::PostEntityToHTMLFileTest < Test::Unit::TestCase
   def test_call
     expected_content = <<~HEREDOC
       <!DOCTYPE html>
-      <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="Foo bar">
-        <meta name="keywords" content="Mateusz,Dobek,matdobek,foo,bar">
-        <meta name="author" content="Mateusz Dobek">
-        <title>Foo bar</title>
-        <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-      </head>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="description" content="Foo bar">
+          <meta name="keywords" content="Mateusz,Dobek,matdobek,foo,bar">
+          <meta name="author" content="Mateusz Dobek">
+          <title>Foo bar</title>
+          <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+        </head>
 
-      <body>
-        <a href="../index.html">&#10094;&#10094;&#10094;</a>
-        <h1>Foo bar</h1>
-      <h2>Header hello</h2>
+        <body>
+          <a href="../index.html">&#10094;&#10094;&#10094;</a>
+          <h1>Foo bar</h1>
+        <h2>Header hello</h2>
       <p>Paragraph hello</p>
-      </body>
+        </body>
+      </html>
     HEREDOC
 
     result = object_under_test.call

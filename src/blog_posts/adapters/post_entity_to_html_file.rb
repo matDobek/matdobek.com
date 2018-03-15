@@ -53,20 +53,22 @@ module BlogPosts
 
         <<~HEREDOC
           <!DOCTYPE html>
-          <head>
-            <meta charset="UTF-8">
-            <meta name="description" content="#{head_description}">
-            <meta name="keywords" content="#{head_keywords}">
-            <meta name="author" content="#{head_author}">
-            <title>#{head_title}</title>
-            <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-          </head>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <meta name="description" content="#{head_description}">
+              <meta name="keywords" content="#{head_keywords}">
+              <meta name="author" content="#{head_author}">
+              <title>#{head_title}</title>
+              <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+            </head>
 
-          <body>
-            <a href="../index.html">&#10094;&#10094;&#10094;</a>
-            <h1>#{body_title}</h1>
-          #{article}
-          </body>
+            <body>
+              <a href="../index.html">&#10094;&#10094;&#10094;</a>
+              <h1>#{body_title}</h1>
+            #{article}
+            </body>
+          </html>
         HEREDOC
       end
     end
