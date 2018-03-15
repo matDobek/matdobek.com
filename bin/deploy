@@ -2,7 +2,7 @@
 
 bin/generate_posts
 
-scp -r ./assets/ r_priv:/var/www/matdobek.com/assets/
-scp -r ./posts__html/ r_priv:/var/www/matdobek.com/posts__html/
+scp -r ./assets/ r_priv:/var/www/matdobek.com/
+scp -r ./posts__html/ r_priv:/var/www/matdobek.com/
 scp ./index.html r_priv:/var/www/matdobek.com/
 scp ./pgp.html r_priv:/var/www/matdobek.com/
